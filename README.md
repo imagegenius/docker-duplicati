@@ -6,6 +6,6 @@
 
 ## Version Information
 
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6overlay](https://img.shields.io/badge/s6--overlay-2.1.0.2-blue?style=for-the-badge) ![mono](https://img.shields.io/badge/mono-5.20.1.19-blue?style=for-the-badge) ![duplicati](https://img.shields.io/badge/duplicati-v2.0.5.1-2.0.5.1_beta_2020-01-18-blue?style=for-the-badge)
+![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6overlay](https://img.shields.io/badge/s6--overlay-2.1.0.2-blue?style=for-the-badge) ![mono](https://img.shields.io/badge/mono-5.20.1.19-blue?style=for-the-badge) ![duplicati](https://img.shields.io/badge/duplicati-2.0.5.1-blue?style=for-the-badge)
 
 See [package_versions.txt](https://github.com/hydazz/docker-duplicati/blob/main/package_versions.txt) for more detail
