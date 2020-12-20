@@ -14,11 +14,9 @@ jobs:
       id: variables
       env:
         GIT_USER: hydazz
-        GIT_REPO: docker-radarr
+        GIT_REPO: docker-duplicati
         GIT_BRANCH: main
-        DOCKERHUB_IMAGE: vcxpz/radarr
-        DOCKERIMAGE_TAG: latest
-        RADARR_BRANCH: nightly
+        DOCKERHUB_IMAGE: vcxpz/duplicati
       run: |
         echo "::set-output name=GIT_USER::$GIT_USER"
         echo "::set-output name=GIT_REPO::$GIT_REPO"
@@ -104,9 +102,9 @@ jobs:
         GIT_USER: ${{ steps.variables.outputs.GIT_USER }}
         GIT_REPO: ${{ steps.variables.outputs.GIT_REPO }}
         GIT_BRANCH: ${{ steps.variables.outputs.GIT_BRANCH }}
-        GIT_KEY: ${{ secrets.GIT_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git push https://"$GIT_USER":"$GIT_KEY"@github.com/"$GIT_USER"/"$GIT_REPO".git $GIT_BRANCH
+        git push https://"$GIT_USER":"$GITHUB_TOKEN"@github.com/"$GIT_USER"/"$GIT_REPO".git $GIT_BRANCH
 
     - name: Tag And Push Docker Image
       if: steps.packages.outputs.OLD_RADARR_RELEASE != steps.variables.outputs.RADARR_RELEASE
