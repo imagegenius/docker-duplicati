@@ -24,6 +24,7 @@ jobs:
         GIT_REPO: docker-duplicati
         GIT_BRANCH: main
         DOCKERHUB_IMAGE: vcxpz/duplicati
+        DOCKERIMAGE_TAG: latest
       run: |
         echo "::set-output name=GIT_USER::$GIT_USER"
         echo "::set-output name=GIT_REPO::$GIT_REPO"
