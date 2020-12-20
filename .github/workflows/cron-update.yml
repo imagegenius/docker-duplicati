@@ -2,7 +2,7 @@ name: Cron Update CI
 
 on:
   schedule:
-    - cron: '5 0 * * *'
+    - cron: '10 0 * * *'
 
 jobs:
   amd64:
@@ -26,8 +26,9 @@ jobs:
         echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
         echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
         echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/linuxserver/$GIT_REPO/releases/latest" | jq -r .tag_name)"
-        echo "::set-output name=RADARR_RELEASE::$(curl -sL "https://radarr.servarr.com/v1/update/${RADARR_BRANCH}/changes?os=linuxmusl" | jq -r '.[0].version')"
-        echo "::set-output name=RADARR_BRANCH::$RADARR_BRANCH"
+        DUPLICATI_RELEASE=$(curl -sX GET "https://api.github.com/repos/duplicati/duplicati/releases" | jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name')
+        echo "::set-output name=DUPLICATI_RELEASE::$DUPLICATI_RELEASE"
+        echo "::set-output name=DUPLICATI_URL::$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${DUPLICATI_RELEASE}" | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)"
 
     - name: Docker Login
       env:
@@ -46,10 +47,9 @@ jobs:
       env:
         VERSION: ${{ steps.variables.outputs.VERSION }}
         DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
-        RADARR_RELEASE: ${{ steps.variables.outputs.RADARR_RELEASE }}
-        RADARR_BRANCH: ${{ steps.variables.outputs.RADARR_BRANCH }}
+        DUPLICATI_URL: ${{ steps.variables.outputs.DUPLICATI_URL }}
       run: |
-        docker build --no-cache --pull . --file Dockerfile --build-arg RADARR_BRANCH="$RADARR_BRANCH" --build-arg RADARR_RELEASE="$RADARR_RELEASE" --build-arg VERSION="$VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+        docker build --no-cache --pull . --file Dockerfile --build-arg DUPLICATI_URL="$DUPLICATI_URL" --build-arg VERSION="$VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
 
     - name: Get New Package Versions From Image
       id: packages
@@ -60,22 +60,24 @@ jobs:
         docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp "$DOCKERHUB_IMAGE":cibuild -c '\
           apk info -v | sort >/tmp/package_versions.txt'
         echo "::set-output name=NEW_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
-        echo "::set-output name=OLD_RADARR_RELEASE::$(cat version_info.json | jq -r .radarr_release)"
 
     - name: Update README.md
       id: readme
       env:
-        RADARR_RELEASE: ${{ steps.variables.outputs.RADARR_RELEASE }}
+        DUPLICATI_RELEASE: ${{ steps.variables.outputs.DUPLICATI_RELEASE }}
       run: |
         echo "::set-output name=OLD_MD5::$(md5sum README.md | awk '{ print $1 }')"
-        OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-alpine/main/version_info.json" | jq -r .overlay_version)
+        OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-mono/main/version_info.json" | jq -r .overlay_version)
+        MONO_VERSION=$(cat package_versions.txt | grep -E "mono.*?-" | sed -n 1p | cut -c 6- | sed -E 's/-r.*//g')
         OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
-        OLD_RADARR_RELEASE=$(cat version_info.json | jq -r .radarr_release)
+        OLD_MONO_VERSION=$(cat version_info.json | jq -r .mono_version)
+        OLD_DUPLICATI_RELEASE=$(cat version_info.json | jq -r .duplicati_release)
         sed -i \
           -e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
-          -e "s/${OLD_RADARR_RELEASE}/${RADARR_RELEASE}/g" \
+          -e "s/${OLD_MONO_VERSION}/${MONO_VERSION}/g" \
+          -e "s/${OLD_DUPLICATI_RELEASE}/${DUPLICATI_RELEASE}/g" \
           README.md
-        printf '{\n"overlay_version": "'${OVERLAY_VERSION}'",\n"radarr_release": "'${RADARR_RELEASE}'"\n}\n' >version_info.json
+        printf '{\n"overlay_version": "'${OVERLAY_VERSION}'",\n"mono_version": "'${MONO_VERSION}'",\n"duplicati_release": "'${DUPLICATI_RELEASE}'"\n}\n' >version_info.json
         echo "::set-output name=NEW_MD5::$(md5sum README.md | awk '{ print $1 }')"
 
     - name: Stage README.md Changes
