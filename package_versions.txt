@@ -8,7 +8,6 @@ ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 ca-certificates-mono-6.8.0.123-r0
 coreutils-8.32-r1
-curl-7.74.0-r0
 libacl-2.2.53-r0
 libattr-2.4.48-r0
 libc-utils-0.7.2-r3
