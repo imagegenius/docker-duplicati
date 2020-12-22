@@ -16,6 +16,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Australia/Melbourne \
   -e CLI_ARGS= `#optional` \
+  -e DEBUG=true/false `#optional` \
   -p 8200:8200 \
   -v <path to appdata>:/config \
   -v <path to backups>:/backups \
@@ -23,6 +24,9 @@ docker run -d \
   --restart unless-stopped \
   vcxpz/duplicati
 ```
+
+## Credits
+* [hotio](https://github.com/hotio) for the `redirect_cmd` function
 
 ## Todo
 * Nothing, everything works 🙂
