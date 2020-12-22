@@ -11,6 +11,9 @@ ARG DUPLICATI_URL
 ENV HOME="/config"
 
 RUN \
+   echo "**** install build packages ****" && \
+   apk add --no-cache --virtual=build-dependencies \
+      curl && \
    echo "**** install duplicati ****" && \
    mkdir -p \
       /app/duplicati && \
@@ -21,6 +24,8 @@ RUN \
    /tmp/duplicati.zip -d \
       /app/duplicati && \
    echo "**** cleanup ****" && \
+   apk del --purge \
+      build-dependencies && \
    rm -rf \
       /tmp/*
 
