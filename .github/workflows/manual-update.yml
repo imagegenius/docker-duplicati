@@ -31,8 +31,8 @@ jobs:
         echo "::set-output name=GIT_BRANCH::$GIT_BRANCH"
         echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
         echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
-        echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/linuxserver/$GIT_REPO/releases/latest" | jq -r .tag_name)"
         DUPLICATI_RELEASE=$(curl -sX GET "https://api.github.com/repos/duplicati/duplicati/releases" | jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name')
+        echo "::set-output name=VERSION::$DUPLICATI_RELEASE"
         echo "::set-output name=DUPLICATI_RELEASE::$DUPLICATI_RELEASE"
         echo "::set-output name=DUPLICATI_URL::$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${DUPLICATI_RELEASE}" | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)"
 

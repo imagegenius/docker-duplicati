@@ -24,7 +24,6 @@ jobs:
         echo "::set-output name=GIT_BRANCH::$GIT_BRANCH"
         echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
         echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
-        echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/linuxserver/$GIT_REPO/releases/latest" | jq -r .tag_name)"
         DUPLICATI_RELEASE=$(curl -sX GET "https://api.github.com/repos/duplicati/duplicati/releases" | jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name')
         echo "::set-output name=DUPLICATI_RELEASE::$DUPLICATI_RELEASE"
         echo "::set-output name=DUPLICATI_URL::$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${DUPLICATI_RELEASE}" | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)"
@@ -44,11 +43,11 @@ jobs:
 
     - name: Build The Docker Image
       env:
-        VERSION: ${{ steps.variables.outputs.VERSION }}
+        VERSION: ${{ steps.variables.outputs.DUPLICATI_RELEASE }}
         DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
         DUPLICATI_URL: ${{ steps.variables.outputs.DUPLICATI_URL }}
       run: |
-        docker build --no-cache --pull . --file Dockerfile --build-arg DUPLICATI_URL="$DUPLICATI_URL" --build-arg VERSION="$VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+        docker build --no-cache --pull . --file Dockerfile --build-arg DUPLICATI_URL="$DUPLICATI_URL" --build-arg DUPLICATI_RELEASE="$DUPLICATI_RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
 
     - name: Get New Package Versions From Image
       id: packages

@@ -2,8 +2,8 @@ FROM vcxpz/baseimage-mono
 
 # set version label
 ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="Fork of Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+ARG DUPLICATI_RELEASE
+LABEL build_version="Duplicati version:- ${DUPLICATI_RELEASE} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="Alex Hyde"
 
 # environment settings
