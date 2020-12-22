@@ -11,16 +11,18 @@ ARG DUPLICATI_URL
 ENV HOME="/config"
 
 RUN \
- echo "**** install duplicati ****" && \
- mkdir -p \
-	/app/duplicati && \
- curl -o \
- /tmp/duplicati.zip -L \
-	"${DUPLICATI_URL}" && \
- unzip -q /tmp/duplicati.zip -d /app/duplicati && \
- echo "**** cleanup ****" && \
- rm -rf \
-	/tmp/*
+   echo "**** install duplicati ****" && \
+   mkdir -p \
+      /app/duplicati && \
+   curl -o \
+   /tmp/duplicati.zip -L \
+      "${DUPLICATI_URL}" && \
+   unzip -q \
+   /tmp/duplicati.zip -d \
+      /app/duplicati && \
+   echo "**** cleanup ****" && \
+   rm -rf \
+      /tmp/*
 
 # copy local files
 COPY root/ /
