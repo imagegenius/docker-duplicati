@@ -64,19 +64,8 @@ jobs:
       env:
         DUPLICATI_RELEASE: ${{ steps.variables.outputs.DUPLICATI_RELEASE }}
       run: |
-        DUPLICATI_RELEASE=$(echo $DUPLICATI_RELEASE | cut -c 2-8)
         echo "::set-output name=OLD_MD5::$(md5sum README.md | awk '{ print $1 }')"
-        OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-mono/main/version_info.json" | jq -r .overlay_version)
-        MONO_VERSION=$(cat package_versions.txt | grep -E "mono-runtime.*?-" | sed -n 1p | cut -c 14- | sed -E 's/-r.*//g')
-        OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
-        OLD_MONO_VERSION=$(cat version_info.json | jq -r .mono_version)
-        OLD_DUPLICATI_RELEASE=$(cat version_info.json | jq -r .duplicati_release)
-        sed -i \
-          -e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
-          -e "s/${OLD_MONO_VERSION}/${MONO_VERSION}/g" \
-          -e "s/${OLD_DUPLICATI_RELEASE}/${DUPLICATI_RELEASE}/g" \
-          README.md
-        printf '{\n"overlay_version": "'${OVERLAY_VERSION}'",\n"mono_version": "'${MONO_VERSION}'",\n"duplicati_release": "'${DUPLICATI_RELEASE}'"\n}' >version_info.json
+        chmod +x update_version_info.sh && ./update_version_info.sh
         echo "::set-output name=NEW_MD5::$(md5sum README.md | awk '{ print $1 }')"
 
     - name: Commit And Push Changes To Github
