@@ -1,15 +1,15 @@
 #!/usr/bin/with-contenv bash
 
 redirect_cmd() {
-  if [[ "${DEBUG}" == "true" ]]; then
-    "$@"
-  else
-    "$@" >/dev/null 2>&1
-  fi
+	if [[ "${DEBUG}" == "true" ]]; then
+		"$@"
+	else
+		"$@" >/dev/null 2>&1
+	fi
 }
 
 cd /app/duplicati || exit
 
 redirect_cmd exec \
-  s6-setuidgid abc mono Duplicati.Server.exe \
-  --webservice-interface=any --server-datafolder=/config --webservice-allowed-hostnames=* $CLI_ARGS
+	s6-setuidgid abc mono Duplicati.Server.exe \
+	--webservice-interface=any --server-datafolder=/config --webservice-allowed-hostnames=* $CLI_ARGS

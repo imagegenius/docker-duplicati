@@ -18,10 +18,10 @@ RUN \
    mkdir -p \
       /app/duplicati && \
    curl -o \
-   /tmp/duplicati.zip -L \
+      /tmp/duplicati.zip -L \
       "${DUPLICATI_URL}" && \
    unzip -q \
-   /tmp/duplicati.zip -d \
+      /tmp/duplicati.zip -d \
       /app/duplicati && \
    echo "**** cleanup ****" && \
    apk del --purge \
