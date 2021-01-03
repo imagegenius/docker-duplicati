@@ -29,8 +29,8 @@ mono-reference-assemblies-6.12.0.107-r0
 mono-runtime-6.12.0.107-r0
 musl-1.2.2_pre6-r0
 musl-utils-1.2.2_pre6-r0
-ncurses-libs-6.2_p20201227-r0
-ncurses-terminfo-base-6.2_p20201227-r0
+ncurses-libs-6.2_p20210102-r0
+ncurses-terminfo-base-6.2_p20210102-r0
 nghttp2-libs-1.42.0-r0
 procps-3.3.16-r0
 readline-8.1.0-r0
