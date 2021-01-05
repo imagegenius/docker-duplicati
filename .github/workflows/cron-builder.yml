@@ -1,13 +1,8 @@
-name: Manual Update CI
+name: Cron Builder CI
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "**/Dockerfile"
-      - "root/**"
+  schedule:
+    - cron: "10 11 * * 0"
 
 jobs:
   latest:
@@ -42,11 +37,11 @@ jobs:
 
       - name: Build The Docker Image
         env:
-          VERSION: ${{ steps.variables.outputs.VERSION }}
+          VERSION: ${{ steps.variables.outputs.DUPLICATI_RELEASE }}
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           DUPLICATI_URL: ${{ steps.variables.outputs.DUPLICATI_URL }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg DUPLICATI_URL="$DUPLICATI_URL" --build-arg VERSION="$VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg DUPLICATI_URL="$DUPLICATI_URL" --build-arg DUPLICATI_RELEASE="$DUPLICATI_RELEASE" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
 
       - name: Get New Package Versions From Image
         id: packages
@@ -75,6 +70,7 @@ jobs:
           git push
 
       - name: Tag And Push Docker Image
+        if: steps.readme.outputs.OLD_MD5 != steps.readme.outputs.NEW_MD5 || steps.packages.outputs.OLD_MD5 != steps.packages.outputs.NEW_MD5
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}
