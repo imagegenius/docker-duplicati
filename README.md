@@ -8,6 +8,7 @@ Fork of [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-dup
 
 ## Version Information
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![mono](https://img.shields.io/badge/mono-6.12.0.107-blue?style=for-the-badge) ![duplicati](https://img.shields.io/badge/duplicati-2.0.5.1-blue?style=for-the-badge)
+
 **[See here for a list of packages](https://github.com/hydazz/docker-duplicati/blob/main/package_versions.txt)**
 
 ## Usage
