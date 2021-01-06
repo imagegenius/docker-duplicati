@@ -1,12 +1,14 @@
-## Alpine Edge fork of [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/)
-[Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
+## docker-duplicati
+[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/repository/docker/vcxpz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A"Auto+Builder+CI")
 
+Fork of [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/)
 **Make sure to do a test backup before relying on this image**
 
-[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/repository/docker/vcxpz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A%22Cron+Update+CI%22)
+[Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
 
 ## Version Information
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![mono](https://img.shields.io/badge/mono-6.12.0.107-blue?style=for-the-badge) ![duplicati](https://img.shields.io/badge/duplicati-2.0.5.1-blue?style=for-the-badge)
+**[See here for a list of packages](https://github.com/hydazz/docker-duplicati/blob/main/package_versions.txt)**
 
 ## Usage
 ```
@@ -28,5 +30,7 @@ docker run -d \
 ## Credits
 * [hotio](https://github.com/hotio) for the `redirect_cmd` function
 
-## Todo
-* Nothing, everything works 🙂
+## Upgrading Duplicati
+To upgrade, all you have to do is pull our latest Docker image. We automatically check for Duplicati updates daily so there may be some delay when an update is released to when the image is updated.
+
+**Read the official [README](https://github.com/linuxserver/docker-duplicati/) for more information**
