@@ -4,7 +4,7 @@ FROM vcxpz/baseimage-mono
 ARG BUILD_DATE
 ARG DUPLICATI_RELEASE
 LABEL build_version="Duplicati version:- ${DUPLICATI_RELEASE} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="Alex Hyde"
+LABEL maintainer="hydaz"
 
 # environment settings
 ARG DUPLICATI_URL
