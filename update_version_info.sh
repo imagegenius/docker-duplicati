@@ -8,10 +8,10 @@ OLD_MONO_VERSION=$(cat version_info.json | jq -r .mono_version)
 OLD_DUPLICATI_RELEASE=$(cat version_info.json | jq -r .duplicati_release)
 
 sed -i \
-  -e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
-  -e "s/${OLD_MONO_VERSION}/${MONO_VERSION}/g" \
-  -e "s/${OLD_DUPLICATI_RELEASE}/${DUPLICATI_RELEASE}/g" \
-  README.md
+	-e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
+	-e "s/${OLD_MONO_VERSION}/${MONO_VERSION}/g" \
+	-e "s/${OLD_DUPLICATI_RELEASE}/${DUPLICATI_RELEASE}/g" \
+	README.md
 
 NEW_VERSION_INFO="overlay_version|mono_version|duplicati_release
 ${OVERLAY_VERSION}|${MONO_VERSION}|${DUPLICATI_RELEASE}"
