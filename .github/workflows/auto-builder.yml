@@ -23,8 +23,9 @@ jobs:
           echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
           echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
           echo "DOCKERIMAGE_TAG=${DOCKERIMAGE_TAG}" >>$GITHUB_ENV
-          echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)"
+          VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)
           echo "::set-output name=DUPLICATI_URL::$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${VERSION}" | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)"
+          echo "::set-output name=VERSION::${VERSION}"
           echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}"
 
       - name: Docker Login
