@@ -24,9 +24,7 @@ jobs:
           echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
           echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
           echo "DOCKERIMAGE_TAG=${DOCKERIMAGE_TAG}" >>$GITHUB_ENV
-          VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)
-          echo "::set-output name=DUPLICATI_URL::$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${VERSION}" | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)"
-          echo "::set-output name=VERSION::${VERSION}"
+          echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)"
           echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}"
 
       - name: Docker Login
@@ -43,9 +41,8 @@ jobs:
       - name: Build The Docker Image
         env:
           VERSION: ${{ steps.variables.outputs.VERSION }}
-          DUPLICATI_URL: ${{ steps.variables.outputs.DUPLICATI_URL }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg DUPLICATI_URL="$DUPLICATI_URL" --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
 
       - name: Get New Package Versions From Image
         run: |

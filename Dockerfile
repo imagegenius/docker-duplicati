@@ -2,15 +2,14 @@ FROM vcxpz/baseimage-mono
 
 # set version label
 ARG BUILD_DATE
-ARG DUPLICATI_RELEASE
-LABEL build_version="Duplicati version:- ${DUPLICATI_RELEASE} Build-date:- ${BUILD_DATE}"
+ARG VERSION
+LABEL build_version="Duplicati version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ARG DUPLICATI_URL
 ENV HOME="/config"
 
-RUN \
+RUN set -x \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
@@ -19,8 +18,8 @@ RUN \
       /app/duplicati && \
    curl -o \
       /tmp/duplicati.zip -L \
-      "${DUPLICATI_URL}" && \
-   unzip -q \
+      "https://github.com/duplicati/duplicati/releases/download/${VERSION}/duplicati-${VERSION//v[0-9].[0-9].[0-9].[0-9]-}.zip" && \
+   unzip \
       /tmp/duplicati.zip -d \
       /app/duplicati && \
    echo "**** cleanup ****" && \
