@@ -1,15 +1,24 @@
 #!/usr/bin/with-contenv bash
 
 redirect_cmd() {
-	if [[ "${DEBUG}" == "true" ]]; then
+	if [ "${DEBUG}" = "true" ]; then
 		"$@"
 	else
 		"$@" >/dev/null 2>&1
 	fi
 }
 
+if [ "${PRIVILEGED}" = "true" ]; then
+	USER=root
+else
+	USER=abc
+fi
+
 cd /app/duplicati || exit
 
-redirect_cmd exec s6-setuidgid abc \
+redirect_cmd exec s6-setuidgid $USER \
 	mono Duplicati.Server.exe \
-	--webservice-interface=any --server-datafolder=/config --webservice-allowed-hostnames=* "$CLI_ARGS"
+	--webservice-interface=any \
+	--server-datafolder=/config \
+	--webservice-allowed-hostnames=* \
+	"$CLI_ARGS"

@@ -20,6 +20,7 @@ docker run -d \
   -e TZ=Australia/Melbourne \
   -e CLI_ARGS= `#optional` \
   -e DEBUG=true/false `#optional` \
+  -e PRIVILEGED=true/false `#optional` \
   -p 8200:8200 \
   -v <path to appdata>:/config \
   -v <path to backups>:/backups \
@@ -28,10 +29,21 @@ docker run -d \
   vcxpz/duplicati
 ```
 
-## Credits
-* [hotio](https://github.com/hotio) for the `redirect_cmd` function
+## New Environment Variables
+### Debug
+| Name | Description | Default Value |
+|-|-|-|
+| `DEBUG` | set `true` to display errors in the Docker logs. When set to `false` the Docker log is completely muted. | `false` |
+
+### Privileged
+| Name | Description | Default Value |
+|-|-|-|
+| `PRIVILEGED` | Set `true` to run Duplicati as root. **This is not recommended**, but is useful if you have a script that runs before/after a backup that requires root permissions. i.e. stops/starts all docker containers. | `false` |
+
+**See other variables on the official [README](https://github.com/linuxserver/docker-duplicati/)**
 
 ## Upgrading Duplicati
 To upgrade, all you have to do is pull our latest Docker image. We automatically check for Duplicati updates daily so there may be some delay when an update is released to when the image is updated.
 
-**Read the official [README](https://github.com/linuxserver/docker-duplicati/) for more information**
+## Credits
+* [hotio](https://github.com/hotio) for the `redirect_cmd` function
