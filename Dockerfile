@@ -9,7 +9,7 @@ LABEL maintainer="hydaz"
 # environment settings
 ENV HOME="/config"
 
-RUN set -x \
+RUN set -x && \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
       curl && \
