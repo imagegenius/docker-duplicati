@@ -1,14 +1,14 @@
 #!/usr/bin/with-contenv bash
 
 redirect_cmd() {
-	if [ "${DEBUG}" = "true" ]; then
+	if [[ "${DEBUG}" == "true" ]]; then
 		"$@"
 	else
 		"$@" >/dev/null 2>&1
 	fi
 }
 
-if [ "${PRIVILEGED}" = "true" ]; then
+if [[ "${PRIVILEGED}" == "true" ]]; then
 	USER=root
 else
 	USER=abc
