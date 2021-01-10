@@ -12,13 +12,15 @@ ENV HOME="/config"
 RUN set -xe && \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
-      curl && \
+      curl \
+      jq && \
    echo "**** install duplicati ****" && \
    mkdir -p \
       /app/duplicati && \
    curl -o \
       /tmp/duplicati.zip -L \
-      "https://github.com/duplicati/duplicati/releases/download/${VERSION}/duplicati-${VERSION//v[0-9].[0-9].[0-9].[0-9]-}.zip" && \
+      "$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} \
+         | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)" && \
    unzip \
       /tmp/duplicati.zip -d \
       /app/duplicati && \

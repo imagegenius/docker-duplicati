@@ -8,15 +8,13 @@ redirect_cmd() {
 	fi
 }
 
-if [[ "${PRIVILEGED}" == "true" ]]; then
+[[ "${PRIVILEGED}" == "true" ]] &&
 	USER=root
-else
-	USER=abc
-fi
 
 cd /app/duplicati || exit
 
-redirect_cmd exec s6-setuidgid $USER \
+echo "Starting Duplicati."
+redirect_cmd exec s6-setuidgid ${USER:-abc} \
 	mono Duplicati.Server.exe \
 	--webservice-interface=any \
 	--server-datafolder=/config \
