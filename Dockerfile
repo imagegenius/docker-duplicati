@@ -1,4 +1,4 @@
-FROM vcxpz/baseimage-alpine-mono
+FROM vcxpz/baseimage-alpine-mono:latest
 
 # set version label
 ARG BUILD_DATE
