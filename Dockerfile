@@ -17,7 +17,7 @@ RUN set -xe && \
    echo "**** install duplicati ****" && \
    mkdir -p \
       /app/duplicati && \
-   curl -o \
+   curl --silent -o \
       /tmp/duplicati.zip -L \
       "$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${DUPLICATI_RELEASE} \
          | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)" && \
