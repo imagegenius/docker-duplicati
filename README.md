@@ -1,6 +1,6 @@
 ## docker-duplicati
 
-[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A"Auto+Builder+CI") [![codacy branch grade](https://img.shields.io/codacy/grade/c19bcbbcc7294555a8ec5478bad925bb/main?style=for-the-badge)](https://app.codacy.com/gh/hydazz/docker-duplicati)
+[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A"Auto+Builder+CI") [![codacy branch grade](https://img.shields.io/codacy/grade/c19bcbbcc7294555a8ec5478bad925bb/main?style=for-the-badge&logo=codacy)](https://app.codacy.com/gh/hydazz/docker-duplicati)
 
 Fork of [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/)
 
@@ -12,7 +12,7 @@ Fork of [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-dup
 
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![mono](https://img.shields.io/badge/mono-6.12.0.107-blue?style=for-the-badge) ![duplicati](https://img.shields.io/badge/duplicati-2.0.5.1-blue?style=for-the-badge)
 
-**[See here for a list of packages](https://github.com/hydazz/docker-duplicati/blob/main/package_versions.txt)**
+See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
 
 ## Usage
 
