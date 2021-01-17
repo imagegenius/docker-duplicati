@@ -21,4 +21,3 @@ jq -Rn '
 ( inputs | split("|") ) as $vals |
 [[$keys, $vals] | transpose[] | {key:.[0],value:.[1]}] | from_entries
 ' <<<"$NEW_VERSION_INFO" >version_info.json
-x
