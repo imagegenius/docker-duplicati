@@ -2,8 +2,8 @@ FROM vcxpz/baseimage-alpine-mono:latest
 
 # set version label
 ARG BUILD_DATE
-ARG DUPLICATI_RELEASE
-LABEL build_version="Duplicati version:- ${DUPLICATI_RELEASE} Build-date:- ${BUILD_DATE}"
+ARG VERSION
+LABEL build_version="Duplicati version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
@@ -19,7 +19,7 @@ RUN set -xe && \
       /app/duplicati && \
    curl --silent -o \
       /tmp/duplicati.zip -L \
-      "$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${DUPLICATI_RELEASE} \
+      "$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} \
          | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)" && \
    unzip \
       /tmp/duplicati.zip -d \
