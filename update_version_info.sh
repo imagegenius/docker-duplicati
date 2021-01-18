@@ -1,8 +1,8 @@
 #!/bin/bash
-DUPLICATI_RELEASE=$(echo "${DUPLICATI_RELEASE}" | cut -c 2-8)
+
+DUPLICATI_RELEASE=$(echo "${APP_VERSION}" | cut -c 2-8)
 OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-alpine-mono/main/version_info.json" | jq -r .overlay_version)
 MONO_VERSION=$(grep <package_versions.txt -E "mono-runtime.*?-" | sed -n 1p | cut -c 14- | sed -E 's/-r.*//g')
-DUPLICATI_RELEASE=${APP_VERSION}
 
 OLD_OVERLAY_VERSION=$(jq <version_info.json -r .overlay_version)
 OLD_MONO_VERSION=$(jq <version_info.json -r .mono_version)
