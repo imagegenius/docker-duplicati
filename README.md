@@ -35,16 +35,9 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
 
 ## New Environment Variables
 
-### Debug
-
-| Name    | Description                                                                                              | Default Value |
-| ------- | -------------------------------------------------------------------------------------------------------- | ------------- |
-| `DEBUG` | set `true` to display errors in the Docker logs. When set to `false` the Docker log is completely muted. | `false`       |
-
-### Privileged
-
 | Name         | Description                                                                                                                                                                                                   | Default Value |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `DEBUG`      | set `true` to display errors in the Docker logs. When set to `false` the Docker log is completely muted.                                                                                                      | `false`       |
 | `PRIVILEGED` | Set `true` to run Duplicati as root. **This is not recommended**, but is useful if you have a script that runs before/after a backup that requires root permissions. i.e. stops/starts all docker containers. | `false`       |
 
 **See other variables on the official [README](https://github.com/linuxserver/docker-duplicati/)**
