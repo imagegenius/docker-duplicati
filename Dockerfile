@@ -20,7 +20,7 @@ RUN \
 		/app/duplicati && \
 	curl --silent -o \
 		/tmp/duplicati.zip -L \
-		"$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} |
+		"$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} | \
 			jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)" && \
 	unzip -q \
 		/tmp/duplicati.zip -d \
