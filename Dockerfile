@@ -11,25 +11,25 @@ LABEL maintainer="hydaz"
 ENV HOME="/config"
 
 RUN \
-   echo "**** install build packages ****" && \
-   apk add --no-cache --virtual=build-dependencies \
-     curl \
-     jq && \
-   echo "**** install duplicati ****" && \
-   mkdir -p \
-     /app/duplicati && \
-   curl --silent -o \
-     /tmp/duplicati.zip -L \
-     "$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} \
-          | jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)" && \
-   unzip -q \
-     /tmp/duplicati.zip -d \
-     /app/duplicati && \
-   echo "**** cleanup ****" && \
-   apk del --purge \
-     build-dependencies && \
-   rm -rf \
-     /tmp/*
+	echo "**** install build packages ****" && \
+	apk add --no-cache --virtual=build-dependencies \
+		curl \
+		jq && \
+	echo "**** install duplicati ****" && \
+	mkdir -p \
+		/app/duplicati && \
+	curl --silent -o \
+		/tmp/duplicati.zip -L \
+		"$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} |
+			jq -r '.assets[].browser_download_url' | grep zip | grep -v signatures)" && \
+	unzip -q \
+		/tmp/duplicati.zip -d \
+		/app/duplicati && \
+	echo "**** cleanup ****" && \
+	apk del --purge \
+		build-dependencies && \
+	rm -rf \
+		/tmp/*
 
 # copy local files
 COPY root/ /
