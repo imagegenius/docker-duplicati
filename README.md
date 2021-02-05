@@ -43,3 +43,7 @@ To upgrade, all you have to do is pull the latest Docker image. We automatically
 ## Credits
 
 -   [hotio](https://github.com/hotio) for the `redirect_cmd` function
+
+## Fixing Appdata Permissions
+
+If you ever accidentally screw up the permissions on the appdata folder, run fix-perms within the container. This will restore most of the files/folders with the correct permissions.
