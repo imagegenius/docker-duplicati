@@ -21,12 +21,12 @@ mono-reference-assemblies-6.12.0.107-r1
 mono-runtime-6.12.0.107-r1
 musl-1.2.2-r1
 musl-utils-1.2.2-r1
-ncurses-libs-6.2_p20210123-r0
-ncurses-terminfo-base-6.2_p20210123-r0
+ncurses-libs-6.2_p20210130-r0
+ncurses-terminfo-base-6.2_p20210130-r0
 procps-3.3.16-r0
 readline-8.1.0-r0
 s6-ipcserver-2.10.0.1-r0
-scanelf-1.2.8-r0
+scanelf-1.2.9-r0
 shadow-4.8.1-r0
 skalibs-2.10.0.1-r0
 sqlite-libs-3.34.1-r0
