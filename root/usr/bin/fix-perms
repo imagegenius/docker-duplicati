@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+# universal
+
+echo "This may take a while, be patient!"
+find /config -type d -exec chmod 0755 {} \; &
+find /config -type f -exec chmod 0644 {} \;
+
+chmod +x /config/scripts/*.sh
+
+echo "Please restart the container"
