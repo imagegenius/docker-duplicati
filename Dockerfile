@@ -1,5 +1,4 @@
-ARG TAG
-FROM vcxpz/baseimage-alpine-mono:${TAG}
+FROM vcxpz/baseimage-alpine:latest
 
 # set version label
 ARG BUILD_DATE
@@ -16,6 +15,10 @@ RUN \
 		curl \
 		jq && \
 	echo "**** install duplicati ****" && \
+	if [ -z ${VERSION+x} ]; then \
+		VERSION=$(curl -sX GET "https://api.github.com/repos/duplicati/duplicati/releases" | \
+			jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'); \
+	fi && \
 	mkdir -p \
 		/app/duplicati && \
 	curl --silent -o \
