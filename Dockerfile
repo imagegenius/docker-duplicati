@@ -16,7 +16,7 @@ RUN \
 		jq && \
 	echo "**** install duplicati ****" && \
 	if [ -z ${VERSION+x} ]; then \
-		VERSION=$(curl -sX GET "https://api.github.com/repos/duplicati/duplicati/releases" | \
+		VERSION=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
 			jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'); \
 	fi && \
 	mkdir -p \
