@@ -17,7 +17,6 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Australia/Melbourne \
   -e CLI_ARGS= #optional \
-  -e DEBUG=true/false #optional \
   -e PRIVILEGED=true/false #optional \
   -p 8200:8200 \
   -v <path to appdata>:/config \
@@ -29,14 +28,7 @@ docker run -d \
 
 [![template](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/duplicati.xml)
 
-## New Environment Variables
-
-| Name         | Description                                                                                                                                                                                                   | Default Value |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `DEBUG`      | set `true` to display errors in the Docker logs. When set to `false` the Docker log is completely muted.                                                                                                      | `false`       |
-| `PRIVILEGED` | Set `true` to run Duplicati as root. **This is not recommended**, but is useful if you have a script that runs before/after a backup that requires root permissions. i.e. stops/starts all docker containers. | `false`       |
-
-**See other variables on the official [README](https://github.com/linuxserver/docker-duplicati/)**
+**Read the official [README.md](https://github.com/linuxserver/docker-mariadb/) for more information**
 
 ## Upgrading Duplicati
 

@@ -1,20 +1,12 @@
 #!/usr/bin/with-contenv bash
 
-redirect_cmd() {
-	if [[ "${DEBUG}" == "true" ]]; then
-		"$@"
-	else
-		"$@" >/dev/null 2>&1
-	fi
-}
-
-[[ "${PRIVILEGED}" == "true" ]] &&
+[[ "${PRIVILEGED}" = "true" ]] &&
 	USER=root
 
 cd /app/duplicati || exit
 
 echo "Starting Duplicati."
-redirect_cmd exec s6-setuidgid ${USER:-abc} \
+exec s6-setuidgid ${USER:-abc} \
 	mono Duplicati.Server.exe \
 	--webservice-interface=any \
 	--server-datafolder=/config \
