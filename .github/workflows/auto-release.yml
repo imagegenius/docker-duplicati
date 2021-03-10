@@ -25,7 +25,7 @@ jobs:
                "tag_name": "'${VERSION}'",
                "target_commitish": "'${main}'",
                "name": "'${VERSION}'",
-               "body": "Upgrading Duplicati '${OLD_VERSION}' to '${VERSION}' \n[Changelog](https://github.com/duplicati/duplicati/releases/tag/${VERSION})",
+               "body": "Upgrading Duplicati '${OLD_VERSION}' to '${VERSION}'",
                "draft": false,
                "prerelease": false
           }' >releasebody.json
