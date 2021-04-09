@@ -14,6 +14,9 @@ RUN set -xe && \
 	apk add --no-cache --virtual=build-dependencies \
 		curl \
 		jq && \
+	echo "**** install runtime packages ****" && \
+	apk add --no-cache \
+		rclone \
 	echo "**** install duplicati ****" && \
 	if [ -z ${VERSION+x} ]; then \
 		VERSION=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
@@ -39,4 +42,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8200
-VOLUME /config /source
+VOLUME /config /source /backups
