@@ -16,7 +16,7 @@ RUN set -xe && \
 		jq && \
 	echo "**** install runtime packages ****" && \
 	apk add --no-cache \
-		rclone \
+		rclone && \
 	echo "**** install duplicati ****" && \
 	if [ -z ${VERSION+x} ]; then \
 		VERSION=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
