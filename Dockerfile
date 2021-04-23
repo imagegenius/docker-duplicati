@@ -18,7 +18,7 @@ RUN set -xe && \
 	apk add --no-cache \
 		rclone && \
 	echo "**** install duplicati ****" && \
-	if [ -z ${VERSION+x} ]; then \
+	if [ -z ${VERSION} ]; then \
 		VERSION=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
 			jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'); \
 	fi && \
