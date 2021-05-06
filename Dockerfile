@@ -15,7 +15,9 @@ RUN set -xe && \
 		curl \
 		jq && \
 	echo "**** install runtime packages ****" && \
-	apk add --no-cache \
+	apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+		libgdiplus \
+		terminus-font \
 		mono-reference-assemblies-facades && \
 	echo "**** install duplicati ****" && \
 	if [ -z ${VERSION} ]; then \
