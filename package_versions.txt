@@ -3,7 +3,7 @@ alpine-keys-2.2-r0
 apk-tools-2.12.5-r0
 bash-5.1.4-r0
 brotli-libs-1.0.9-r4
-busybox-1.33.0-r7
+busybox-1.33.1-r1
 ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 ca-certificates-mono-6.12.0.122-r0
@@ -34,8 +34,8 @@ libmd-1.0.3-r0
 libmount-2.36.2-r2
 libpng-1.6.37-r1
 libproc-3.3.17-r0
+libretls-3.3.2-r0
 libssl1.1-1.1.1k-r0
-libtls-standalone-2.9.1-r1
 libuuid-2.36.2-r2
 libwebp-1.2.0-r0
 libx11-1.7.0-r0
@@ -51,8 +51,8 @@ mono-reference-assemblies-facades-6.12.0.122-r0
 mono-runtime-6.12.0.122-r0
 musl-1.2.2-r2
 musl-utils-1.2.2-r2
-ncurses-libs-6.2_p20210424-r0
-ncurses-terminfo-base-6.2_p20210424-r0
+ncurses-libs-6.2_p20210501-r0
+ncurses-terminfo-base-6.2_p20210501-r0
 pango-1.48.4-r0
 pcre-8.44-r0
 pixman-0.40.0-r2
@@ -63,7 +63,7 @@ scanelf-1.2.9-r0
 shadow-4.8.1-r0
 skalibs-2.10.0.3-r0
 sqlite-libs-3.35.5-r0
-ssl_client-1.33.0-r7
+ssl_client-1.33.1-r1
 terminus-font-4.49.1-r1
 tiff-4.2.0-r1
 tzdata-2021a-r0
