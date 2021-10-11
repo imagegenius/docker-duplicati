@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+[[ "${PRIVILEGED}" = "true" ]] &&
+	USER=root
+
+cd /app/duplicati || exit
+
+echo "Starting Duplicati."
+exec s6-setuidgid ${USER:-abc} \
+	mono Duplicati.Server.exe \
+	--webservice-interface=any \
+	--server-datafolder=/config \
+	--webservice-allowed-hostnames=* \
+	"$CLI_ARGS"

@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p \
+	/config/scripts
+
+if ! ls -1qA /config/scripts/ | grep -q .; then
+	cp /defaults/demo.sh /config/scripts/demo.sh
+fi
+
+# permissions
+chown -R abc:abc \
+	/config
