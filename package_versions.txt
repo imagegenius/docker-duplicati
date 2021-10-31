@@ -3,7 +3,7 @@ alpine-keys-2.4-r1
 apk-tools-2.12.7-r3
 bash-5.1.8-r0
 brotli-libs-1.0.9-r5
-busybox-1.34.1-r1
+busybox-1.34.1-r2
 ca-certificates-20191127-r7
 ca-certificates-bundle-20191127-r7
 ca-certificates-mono-6.12.0.122-r2
@@ -15,7 +15,7 @@ fontconfig-2.13.1-r4
 freetype-2.11.0-r0
 fribidi-1.0.11-r0
 giflib-5.2.1-r0
-glib-2.70.0-r1
+glib-2.70.1-r0
 graphite2-1.3.14-r0
 harfbuzz-3.0.0-r1
 libacl-2.2.53-r0
@@ -28,7 +28,7 @@ libcrypto1.1-1.1.1l-r4
 libcurl-7.79.1-r0
 libexif-0.6.23-r0
 libffi-3.4.2-r1
-libgcc-10.3.1_git20210921-r1
+libgcc-10.3.1_git20211027-r0
 libgdiplus-6.0.5-r1
 libintl-0.21-r0
 libjpeg-turbo-2.1.1-r0
@@ -36,6 +36,7 @@ libmd-1.0.3-r0
 libmount-2.37.2-r1
 libpng-1.6.37-r1
 libproc-3.3.17-r0
+libretls-3.3.4-r2
 libssl1.1-1.1.1l-r4
 libuuid-2.37.2-r1
 libwebp-1.2.1-r0
@@ -52,9 +53,9 @@ mono-reference-assemblies-facades-6.12.0.122-r2
 mono-runtime-6.12.0.122-r2
 musl-1.2.2-r7
 musl-utils-1.2.2-r7
-ncurses-libs-6.2_p20211009-r0
-ncurses-terminfo-base-6.2_p20211009-r0
-nghttp2-libs-1.44.0-r2
+ncurses-libs-6.3_p20211026-r0
+ncurses-terminfo-base-6.3_p20211026-r0
+nghttp2-libs-1.46.0-r0
 pango-1.48.10-r0
 pcre-8.45-r1
 pixman-0.40.0-r3
@@ -65,6 +66,7 @@ scanelf-1.3.3-r0
 shadow-4.8.1-r1
 skalibs-2.11.0.0-r0
 sqlite-libs-3.36.0-r0
+ssl_client-1.34.1-r2
 terminus-font-4.49.1-r1
 tiff-4.3.0-r0
 tzdata-2021e-r0
