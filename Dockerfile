@@ -31,8 +31,6 @@ RUN set -xe && \
 		/tmp/duplicati.zip -d \
 		/app/duplicati && \
 	echo "**** cleanup ****" && \
-	apk del --purge \
-		build-dependencies && \
 	rm -rf \
 		/tmp/*
 
