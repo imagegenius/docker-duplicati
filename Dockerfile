@@ -1,4 +1,4 @@
-FROM vcxpz/baseimage-alpine-mono:latest
+FROM vcxpz/baseimage-alpine:latest
 
 # set version label
 ARG BUILD_DATE
@@ -10,21 +10,19 @@ LABEL maintainer="hydaz"
 ENV HOME="/config"
 
 RUN set -xe && \
-	echo "**** install build packages ****" && \
-	apk add --no-cache --virtual=build-dependencies \
-		jq && \
-	echo "**** install runtime packages ****" && \
+	echo "**** install packages ****" && \
 	apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+		ca-certificates-mono \
+		jq \
 		libgdiplus \
 		mono-reference-assemblies-facades \
 		terminus-font && \
 	echo "**** install duplicati ****" && \
+	mkdir -p /app/duplicati && \
 	if [ -z ${VERSION} ]; then \
 		VERSION=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
 			jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'); \
 	fi && \
-	mkdir -p \
-		/app/duplicati && \
 	curl -o \
 		/tmp/duplicati.zip -L \
 		"$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} | \
