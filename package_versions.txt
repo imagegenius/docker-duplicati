@@ -29,7 +29,7 @@ libcrypto1.1-1.1.1m-r1
 libcurl-7.81.0-r0
 libexif-0.6.23-r0
 libffi-3.4.2-r1
-libgcc-11.2.1_git20220106-r0
+libgcc-11.2.1_git20220117-r0
 libgdiplus-6.0.5-r1
 libintl-0.21-r1
 libjpeg-turbo-2.1.2-r1
@@ -40,7 +40,7 @@ libproc-3.3.17-r1
 libretls-3.4.2-r0
 libssl1.1-1.1.1m-r1
 libuuid-2.37.2-r7
-libwebp-1.2.1-r0
+libwebp-1.2.2-r0
 libx11-1.7.3.1-r0
 libxau-1.0.9-r0
 libxcb-1.14-r2
@@ -70,8 +70,8 @@ ssl_client-1.35.0-r1
 terminus-font-4.49.1-r1
 tiff-4.3.0-r0
 tzdata-2021e-r0
-utmps-libs-0.1.1.0-r1
+utmps-libs-0.1.1.0-r2
 xz-5.2.5-r0
 xz-libs-5.2.5-r0
 zlib-1.2.11-r3
-zstd-libs-1.5.1-r1
+zstd-libs-1.5.1-r2
