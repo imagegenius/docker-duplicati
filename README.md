@@ -2,7 +2,15 @@
 
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A"Auto+Builder+CI")
 
-Fork of [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/) (Equivalent to v2.0.6.3-2.0.6.3_beta_2021-06-17-ls135)
+**This image has been adapted from [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/) (v2.0.6.3-2.0.6.3_beta_2021-06-17-ls135)**
+
+#### Modifications:
+| | Modified|
+|--|--|
+| Packages | N/A |
+| Scripts | N/A |
+| Base OS | Rebased to Alpine |
+| Other | Added the `PRIVILEGED` variable, set to `true` and duplicati will run as root, useful if you need to control docker on the host in a script |
 
 **Make sure to do a test backup before relying on this image**
 
@@ -33,7 +41,3 @@ docker run -d \
 ## Upgrading Duplicati
 
 To upgrade, all you have to do is pull the latest Docker image. We automatically check for Duplicati updates daily. When a new version is released, we build and publish an image both as a version tag and on `:latest`.
-
-## Fixing Appdata Permissions
-
-If you ever accidentally screw up the permissions on the appdata folder, run `fix-perms` within the container. This will restore most of the files/folders with the correct permissions.

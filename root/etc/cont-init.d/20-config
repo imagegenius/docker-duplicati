@@ -1,17 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p \
-	/config/scripts
-
 # update certs for mono
 if [[ ! -f "/app/duplicati/donecerts" ]]; then
 	echo "*** Running mono cert sync ***"
 	cert-sync --quiet /etc/ssl/certs/ca-certificates.crt
 	touch "/app/duplicati/donecerts"
-fi
-
-if ! ls -1qA /config/scripts/ | grep -q .; then
-	cp /defaults/demo.sh /config/scripts/demo.sh
 fi
 
 # permissions
