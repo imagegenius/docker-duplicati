@@ -1,8 +1,6 @@
 ## docker-duplicati
 
-**moved to https://hub.docker.com/u/hydaz**
-
-[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A"Auto+Builder+CI")
+[![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/hydaz/duplicati) ![docker image size](https://img.shields.io/docker/image-size/hydaz/duplicati?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-duplicati/actions?query=workflow%3A"Auto+Builder+CI")
 
 **This image has been adapted from [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/) (v2.0.6.3-2.0.6.3_beta_2021-06-17-ls135)**
 
@@ -33,7 +31,7 @@ docker run -d \
   -v <path to backups>:/backups \
   -v <path to source>:/source \
   --restart unless-stopped \
-  vcxpz/duplicati
+  hydaz/duplicati
 ```
 
 [![template](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/duplicati.xml)
