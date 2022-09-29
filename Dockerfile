@@ -11,6 +11,10 @@ ENV HOME="/config"
 
 RUN set -xe && \
 	echo "**** install packages ****" && \
+	curl -o \
+		/etc/apk/keys/hydaz.rsa.pub \
+		"https://packages.hyde.services/hydaz.rsa.pub" && \
+	echo "https://packages.hyde.services/alpine/apk" >>/etc/apk/repositories && \
 	apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
 		ca-certificates-mono \
 		jq \
