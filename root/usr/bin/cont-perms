@@ -1,3 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-chmod +x /config/scripts/*.sh
