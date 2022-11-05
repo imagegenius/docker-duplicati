@@ -1,13 +1,8 @@
 #!/usr/bin/with-contenv bash
 
-if [[ "${PRIVILEGED}" = "true" ]]; then
-	USER=root
-	echo "PRIVILEGED is set to true, duplicati will run as root"
-	fi
-
 cd /app/duplicati || exit
 
-exec s6-setuidgid ${USER:-abc} \
+exec s6-setuidgid abc \
 		mono Duplicati.Server.exe \
 		--webservice-interface=any \
 		--server-datafolder=/config \

@@ -10,7 +10,7 @@
 | Packages | N/A |
 | Scripts | N/A |
 | Base OS | Rebased to Alpine |
-| Other | Added the `PRIVILEGED` variable, set to `true` and duplicati will run as root, useful if you need to control docker on the host in a script |
+| Other | N/A |
 
 **Make sure to do a test backup before relying on this image**
 
@@ -25,7 +25,6 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Australia/Melbourne \
   -e CLI_ARGS= #optional \
-  -e PRIVILEGED=true/false #optional \
   -p 8200:8200 \
   -v <path to appdata>:/config \
   -v <path to backups>:/backups \
