@@ -20,6 +20,7 @@ RUN set -xe && \
 		jq \
 		libgdiplus \
 		mono-reference-assemblies-facades \
+		rclone \
 		sqlite-libs \
 		terminus-font && \
 	echo "**** install duplicati ****" && \

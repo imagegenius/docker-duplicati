@@ -4,7 +4,8 @@
 
 **This image has been adapted from [linuxserver/docker-duplicati](https://github.com/linuxserver/docker-duplicati/) (v2.0.6.3-2.0.6.3_beta_2021-06-17-ls135)**
 
-#### Modifications:
+#### Modifications
+
 | | Modified|
 |--|--|
 | Packages | N/A |
