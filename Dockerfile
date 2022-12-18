@@ -15,7 +15,7 @@ RUN set -xe && \
 		/etc/apk/keys/hydaz.rsa.pub \
 		"https://packages.hyde.services/hydaz.rsa.pub" && \
 	echo "https://packages.hyde.services/alpine/apk" >>/etc/apk/repositories && \
-	apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+	apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
 		ca-certificates-mono \
 		jq \
 		libgdiplus \
