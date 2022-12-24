@@ -10,19 +10,19 @@ LABEL maintainer="hydaz"
 ENV HOME="/config"
 
 RUN set -xe && \
-	echo "**** install packages ****" && \
 	curl -o \
 		/etc/apk/keys/hydaz.rsa.pub \
 		"https://packages.hyde.services/hydaz.rsa.pub" && \
 	echo "https://packages.hyde.services/alpine/apk" >>/etc/apk/repositories && \
-	apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
+	echo "**** install packages ****" && \
+	apk add --no-cache \
 		ca-certificates-mono \
 		jq \
 		libgdiplus \
 		mono-reference-assemblies-facades \
 		rclone \
 		sqlite-libs \
-		terminus-font && \
+		terminus-font && \	
 	echo "**** install duplicati ****" && \
 	mkdir -p /app/duplicati && \
 	if [ -z ${VERSION} ]; then \
