@@ -1,0 +1,28 @@
+---
+
+# jenkins variables
+project_name: docker-duplicati
+external_type: custom_json
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - JSON_URL = 'https://api.github.com/repos/duplicati/duplicati/releases'
+  - JSON_PATH = 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'
+  - BUILD_VERSION_ARG = 'DUPLICATI_RELEASE'
+  - USER = 'hydazz'
+  - REPO = 'docker-duplicati'
+  - CONTAINER_NAME = 'duplicati'
+  - DOCKERHUB_IMAGE = 'hydaz/duplicati'
+  - DEV_DOCKERHUB_IMAGE = 'odev/duplicati'
+  - PR_DOCKERHUB_IMAGE = 'pipepr/duplicati'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='false'
+  - CI='false'
+  - CI_WEB='false'
+  - CI_PORT='8200'
+  - CI_SSL='false'
+  - CI_DELAY='120'
+  - CI_DOCKERENV='TZ=US/Pacific|ISCI=true'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH=''

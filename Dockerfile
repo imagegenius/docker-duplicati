@@ -3,7 +3,8 @@ FROM hydaz/baseimage-alpine:latest
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-LABEL build_version="Duplicati version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+ARG DUPLICATI_RELEASE
+LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
@@ -25,13 +26,13 @@ RUN set -xe && \
 		terminus-font && \	
 	echo "**** install duplicati ****" && \
 	mkdir -p /app/duplicati && \
-	if [ -z ${VERSION} ]; then \
-		VERSION=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
+	if [ -z ${DUPLICATI_RELEASE} ]; then \
+		DUPLICATI_RELEASE=$(curl -sL "https://api.github.com/repos/duplicati/duplicati/releases" | \
 			jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'); \
 	fi && \
 	curl -o \
 		/tmp/duplicati.zip -L \
-		"$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${VERSION} | \
+		"$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/${DUPLICATI_RELEASE} | \
 			jq -r '.assets[].browser_download_url' | grep '.zip$' | grep -v signatures)" && \
 	unzip \
 		/tmp/duplicati.zip -d \
