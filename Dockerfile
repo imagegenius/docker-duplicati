@@ -10,7 +10,7 @@ LABEL maintainer="hydaz"
 # environment settings
 ENV HOME="/config"
 
-RUN set -xe && \
+RUN  \
 	curl -o \
 		/etc/apk/keys/hydaz.rsa.pub \
 		"https://packages.hyde.services/hydaz.rsa.pub" && \
