@@ -21,7 +21,7 @@ pipeline {
     REPO = 'docker-duplicati'
     CONTAINER_NAME = 'duplicati'
     DOCKERHUB_IMAGE = 'hydaz/duplicati'
-    DEV_DOCKERHUB_IMAGE = 'odev/duplicati'
+    DEV_DOCKERHUB_IMAGE = 'dev/duplicati'
     PR_DOCKERHUB_IMAGE = 'pipepr/duplicati'
     DIST_IMAGE = 'alpine'
     MULTIARCH='false'
