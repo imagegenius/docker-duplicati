@@ -18,7 +18,7 @@ repo_vars:
   - PR_DOCKERHUB_IMAGE = 'pipepr/duplicati'
   - DIST_IMAGE = 'alpine'
   - MULTIARCH='false'
-  - CI='false'
+  - CI='true'
   - CI_WEB='true'
   - CI_PORT='8200'
   - CI_SSL='false'
