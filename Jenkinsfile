@@ -25,7 +25,7 @@ pipeline {
     PR_DOCKERHUB_IMAGE = 'pipepr/duplicati'
     DIST_IMAGE = 'alpine'
     MULTIARCH='false'
-    CI='false'
+    CI='true'
     CI_WEB='true'
     CI_PORT='8200'
     CI_SSL='false'
@@ -208,7 +208,35 @@ pipeline {
         }
       }
     }
-    // Run ShellCheck below
+    // Run ShellCheck
+    stage('ShellCheck') {
+      when {
+        environment name: 'CI', value: 'true'
+      }
+      steps {
+        withCredentials([
+          string(credentialsId: 'ci-tests-s3-key-id', variable: 'S3_KEY'),
+          string(credentialsId: 'ci-tests-s3-secret-access-key', variable: 'S3_SECRET')
+        ]) {
+          script{
+            env.SHELLCHECK_URL = 'https://ci-tests.hyde.services/' + env.IMAGE + '/' + env.META_TAG + '/shellcheck-result.xml'
+          }
+          sh '''curl -sL https://raw.githubusercontent.com/linuxserver/docker-shellcheck/master/checkrun.sh | /bin/bash'''
+          sh '''#! /bin/bash
+                set -e
+                docker pull ghcr.io/hydazz/dev-spaces-file-upload:latest
+                docker run --rm \
+                -e DESTINATION=\"${IMAGE}/${META_TAG}/shellcheck-result.xml\" \
+                -e FILE_NAME="shellcheck-result.xml" \
+                -e MIMETYPE="text/xml" \
+                -v ${WORKSPACE}:/mnt \
+                -e SECRET_KEY=\"${S3_SECRET}\" \
+                -e ACCESS_KEY=\"${S3_KEY}\" \
+                -t ghcr.io/hydazz/dev-spaces-file-upload:latest \
+                python /upload.py'''
+        }
+      }
+    }
     // Use helper containers to render templated files
     stage('Update-Templates') {
       when {
@@ -546,17 +574,41 @@ pipeline {
         environment name: 'EXIT_STATUS', value: ''
       }
       steps {
+        withCredentials([
+          string(credentialsId: 'ci-tests-s3-key-id', variable: 'S3_KEY'),
+          string(credentialsId: 'ci-tests-s3-secret-access-key	', variable: 'S3_SECRET')
+        ]) {
           script{
-          env.CI_URL = 'https://ci-tests.hyde.services/' + env.IMAGE + '/' + env.META_TAG + '/index.html'
+            env.CI_URL = 'https://ci-tests.hyde.services/' + env.IMAGE + '/' + env.META_TAG + '/index.html'
           }
           sh '''#! /bin/bash
                 set -e
+                docker pull ghcr.io/hydazz/ci:latest
                 if [ "${MULTIARCH}" == "true" ]; then
-                docker pull ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
-                docker pull ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
-                docker tag ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
-                docker tag ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
-              fi'''
+                  docker pull ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
+                  docker pull ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
+                  docker tag ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
+                  docker tag ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
+                fi
+                docker run --rm \
+                --shm-size=1gb \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                -e IMAGE=\"${IMAGE}\" \
+                -e DELAY_START=\"${CI_DELAY}\" \
+                -e TAGS=\"${CI_TAGS}\" \
+                -e META_TAG=\"${META_TAG}\" \
+                -e PORT=\"${CI_PORT}\" \
+                -e SSL=\"${CI_SSL}\" \
+                -e BASE=\"${DIST_IMAGE}\" \
+                -e SECRET_KEY=\"${S3_SECRET}\" \
+                -e ACCESS_KEY=\"${S3_KEY}\" \
+                -e DOCKER_ENV=\"${CI_DOCKERENV}\" \
+                -e WEB_SCREENSHOT=\"${CI_WEB}\" \
+                -e WEB_AUTH=\"${CI_AUTH}\" \
+                -e WEB_PATH=\"${CI_WEBPATH}\" \
+                -t ghcr.io/hydazz/ci:latest \
+                python3 test_build.py'''
+        }
       }
     }
     /* ##################
