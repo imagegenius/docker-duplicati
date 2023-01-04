@@ -6,6 +6,7 @@
 [![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=hyde.services&message=GitHub%20Package&logo=github)](https://github.com/hydazz/docker-duplicati/packages)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.hyde.services%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-duplicati%2Fjob%2Fmain%2F&logo=jenkins)](https://jenkins.hyde.services/job/Docker-Pipeline-Builders/job/docker-duplicati/job/main/)
 ![Image Size](https://img.shields.io/docker/image-size/hydaz/duplicati.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
+[![CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.hyde.services%2Fduplicati%2Flatest%2Fci-status.yml)](https://ci-tests.hyde.services/hydazz/duplicati/latest/index.html)
 
 [Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
 
