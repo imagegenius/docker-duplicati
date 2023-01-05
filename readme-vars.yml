@@ -5,7 +5,7 @@ project_name: duplicati
 project_url: "https://www.duplicati.com/"
 project_logo: "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/duplicati-icon.png"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others."
-project_github_repo_url: "https://github.com/hydazz/docker-{{ project_name }}"
+project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name }}"
 
 # supported architectures
 available_architectures:

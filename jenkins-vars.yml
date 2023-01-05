@@ -5,17 +5,17 @@ project_name: docker-duplicati
 external_type: custom_json
 release_type: stable
 release_tag: latest
-branch: main
+ig_branch: main
 repo_vars:
   - JSON_URL = 'https://api.github.com/repos/duplicati/duplicati/releases'
   - JSON_PATH = 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'
   - BUILD_VERSION_ARG = 'DUPLICATI_RELEASE'
-  - USER = 'hydazz'
-  - REPO = 'docker-duplicati'
+  - IG_USER = 'imagegenius'
+  - IG_REPO = 'docker-duplicati'
   - CONTAINER_NAME = 'duplicati'
-  - DOCKERHUB_IMAGE = 'hydaz/duplicati'
-  - DEV_DOCKERHUB_IMAGE = 'dev/duplicati'
-  - PR_DOCKERHUB_IMAGE = 'pipepr/duplicati'
+  - DOCKERHUB_IMAGE = 'imagegenius/duplicati'
+  - DEV_DOCKERHUB_IMAGE = 'igdev/duplicati'
+  - PR_DOCKERHUB_IMAGE = 'igpipepr/duplicati'
   - DIST_IMAGE = 'alpine'
   - MULTIARCH='false'
   - CI='true'
