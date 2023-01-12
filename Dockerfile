@@ -1,4 +1,4 @@
-FROM ghcr.io/imagegenius/baseimage-alpine:latest
+FROM ghcr.io/imagegenius/baseimage-alpine:3.17
 
 # set version label
 ARG BUILD_DATE
