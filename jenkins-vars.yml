@@ -26,3 +26,5 @@ repo_vars:
   - CI_DOCKERENV='TZ=US/Pacific|ISCI=true'
   - CI_AUTH='user:password'
   - CI_WEBPATH=''
+sponsor_links:
+  - { name: "Duplicati", url: "https://www.duplicati.com/donate/" }
