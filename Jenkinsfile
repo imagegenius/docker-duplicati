@@ -581,34 +581,28 @@ pipeline {
     /* #######
        Sync
        ####### */
-    // Pulls required images to master for pushing, and node for testing
+    // Pushes/Pulls required images to master for pushing, and node for testing
     stage('Docker-Sync') {
       when {
         environment name: 'EXIT_STATUS', value: ''
       }
       parallel {
         stage('Push/Pull on Node') {
-          when {
-            environment name: 'MULTIARCH', value: 'true'
-            }
           steps {
-            echo "Pushing"
             sh '''#! /bin/bash
                   if [ "${MULTIARCH}" == "false" ]; then
+				    echo "Pushing image"
                     docker tag ${IMAGE}:${META_TAG} ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER}
                     docker push ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER}
                     docker rmi \
                     ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER} || :
                   else
-                    echo "No images to push"
+				    echo "Pulling images"
+                    docker pull ghcr.io/imagegenius/igdev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
+                    docker pull ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
+                    docker tag ghcr.io/imagegenius/igdev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
+                    docker tag ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                   fi
-               '''
-            echo "Pulling"
-            sh '''#! /bin/bash
-                  docker pull ghcr.io/imagegenius/igdev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
-                  docker pull ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
-                  docker tag ghcr.io/imagegenius/igdev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
-                  docker tag ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                '''
           }
         }
@@ -620,6 +614,7 @@ pipeline {
             echo "Running on node: ${NODE_NAME}"
             sh '''#! /bin/bash
                   if [ "${MULTIARCH}" == "true" ]; then
+				    echo "Pulling images"
                     docker pull ghcr.io/imagegenius/igdev-buildcache:amd64-${COMMIT_SHA}-${BUILD_NUMBER}
                     docker pull ghcr.io/imagegenius/igdev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
                     docker pull ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
@@ -627,6 +622,7 @@ pipeline {
                     docker tag ghcr.io/imagegenius/igdev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
                     docker tag ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                   else
+				    echo "Pulling image"
                     while true; do
                       docker pull ghcr.io/imagegenius/igdev-buildcache:${COMMIT_SHA}-${BUILD_NUMBER} &>/dev/null
                       if [ $? -eq 0 ]; then
