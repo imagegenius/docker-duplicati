@@ -24,7 +24,7 @@ pipeline {
     DEV_DOCKERHUB_IMAGE = 'igdev/duplicati'
     PR_DOCKERHUB_IMAGE = 'igpipepr/duplicati'
     DIST_IMAGE = 'alpine'
-    MULTIARCH = 'false'
+    MULTIARCH = 'true'
     CI = 'true'
     CI_WEB = 'true'
     CI_PORT = '8200'
