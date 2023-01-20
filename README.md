@@ -53,7 +53,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Australia/Melbourne
       - CLI_ARGS= #optional
     volumes:
       - </path/to/appdata/config>:/config
@@ -72,7 +72,7 @@ docker run -d \
   --name=duplicati \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Europe/London \
+  -e TZ=Australia/Melbourne \
   -e CLI_ARGS= `#optional` \
   -p 8200:8200 \
   -v </path/to/appdata/config>:/config \
@@ -92,7 +92,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 8200` | WebUI Port: |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Europe/London` | Specify a timezone to use, eg. Europe/London |
+| `-e TZ=Australia/Melbourne` | Specify a timezone to use, eg. Australia/Melbourne |
 | `-e CLI_ARGS=` | Optionally specify any [CLI variables](https://duplicati.readthedocs.io/en/latest/07-other-command-line-utilities/) you want to launch the app with |
 | `-v /config` | Appdata Path |
 | `-v /backups` | Backup Destination Path |
