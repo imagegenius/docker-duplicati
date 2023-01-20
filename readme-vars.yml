@@ -32,7 +32,7 @@ param_ports:
   - { external_port: "8200", internal_port: "8200", port_desc: "WebUI Port:" }
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London"}
+  - { env_var: "TZ", env_value: "Australia/Melbourne", desc: "Specify a timezone to use, eg. Australia/Melbourne"}
 
 # optional container parameters
 opt_param_usage_include_env: true
