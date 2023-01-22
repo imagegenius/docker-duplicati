@@ -2,11 +2,11 @@
 
 # [imagegenius/duplicati](https://github.com/imagegenius/docker-duplicati)
 
-[![GitHub Release](https://img.shields.io/github/release/imagegenius/docker-duplicati.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/imagegenius/docker-duplicati/releases)
-[![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=imagegenius.io&message=GitHub%20Package&logo=github)](https://github.com/imagegenius/docker-duplicati/packages)
-![Image Size](https://img.shields.io/docker/image-size/imagegenius/duplicati.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
+[![GitHub Release](https://img.shields.io/github/release/imagegenius/docker-duplicati.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/imagegenius/docker-duplicati/releases)
+[![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=imagegenius.io&message=GitHub%20Package&logo=github)](https://github.com/imagegenius/docker-duplicati/packages)
+![Image Size](https://img.shields.io/docker/image-size/imagegenius/duplicati.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.imagegenius.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-duplicati%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.imagegenius.io/job/Docker-Pipeline-Builders/job/docker-duplicati/job/main/)
-[![IG CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fimagegenius%2Fduplicati%2Flatest%2Fci-status.yml)](https://ci-tests.imagegenius.io/imagegenius/duplicati/latest/index.html)
+[![IG CI](https://img.shields.io/badge/dynamic/yaml?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fimagegenius%2Fduplicati%2Flatest%2Fci-status.yml)](https://ci-tests.imagegenius.io/imagegenius/duplicati/latest/index.html)
 
 [Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.
 
