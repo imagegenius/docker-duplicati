@@ -15,7 +15,7 @@ available_architectures:
 # development version
 development_versions: true
 development_versions_items:
-  - { tag: "latest", desc: "Beta releases of Duplicati" }
+  - { tag: "latest", desc: "Beta version of Duplicati with an Alpine base." }
 
 
 # container parameters
@@ -42,6 +42,9 @@ opt_param_env_vars:
 # optional parameters
 optional_block_1: false
 optional_block_1_items: ""
+
+# unraid template
+unraid_category: "Backup: Cloud: Network:Other Productivity: Tools:"
 
 # application setup block
 app_setup_block_enabled: true
