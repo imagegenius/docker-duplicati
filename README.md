@@ -31,7 +31,7 @@ This image provides various versions that are available via tags. Please read th
 
 | Tag | Available | Description |
 | :----: | :----: |--- |
-| latest | ✅ | Beta version of Duplicati with an Alpine base. |
+| latest | ✅ | Latest beta release of Duplicati with an Alpine base. |
 
 ## Application Setup
 
@@ -56,9 +56,9 @@ services:
       - TZ=Australia/Melbourne
       - CLI_ARGS= #optional
     volumes:
-      - </path/to/appdata/config>:/config
-      - </path/to/backups>:/backups
-      - </path/to/source>:/source
+      - path_to_appdata:/config
+      - path_to_backups:/backups
+      - path_to_source:/source
       - /tmp:/tmp
     ports:
       - 8200:8200
@@ -75,9 +75,9 @@ docker run -d \
   -e TZ=Australia/Melbourne \
   -e CLI_ARGS= `#optional` \
   -p 8200:8200 \
-  -v </path/to/appdata/config>:/config \
-  -v </path/to/backups>:/backups \
-  -v </path/to/source>:/source \
+  -v path_to_appdata:/config \
+  -v path_to_backups:/backups \
+  -v path_to_source:/source \
   -v /tmp:/tmp \
   --restart unless-stopped \
   ghcr.io/imagegenius/duplicati:latest
@@ -89,7 +89,7 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 8200` | WebUI Port: |
+| `-p 8200` | WebUI Port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Australia/Melbourne` | Specify a timezone to use, eg. Australia/Melbourne |
@@ -97,7 +97,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Appdata Path |
 | `-v /backups` | Backup Destination Path |
 | `-v /source` | Backup Source Path |
-| `-v /tmp` | Temporary Files Path: (For uploads) |
+| `-v /tmp` | Temporary Uploads Path |
 
 ## Environment variables from files (Docker secrets)
 
@@ -183,4 +183,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **01.26.23:** - rearrange init files.
 * **01.03.23:** - Initial release.
