@@ -15,7 +15,7 @@ available_architectures:
 # development version
 development_versions: true
 development_versions_items:
-  - { tag: "latest", desc: "Beta version of Duplicati with an Alpine base." }
+  - { tag: "latest", desc: "Latest beta release of Duplicati with an Alpine base." }
 
 
 # container parameters
@@ -23,13 +23,13 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "</path/to/appdata/config>", desc: "Appdata Path" }
-  - { vol_path: "/backups", vol_host_path: "</path/to/backups>", desc: "Backup Destination Path" }
-  - { vol_path: "/source", vol_host_path: "</path/to/source>", desc: "Backup Source Path" }
-  - { vol_path: "/tmp", vol_host_path: "/tmp", desc: "Temporary Files Path: (For uploads)" }
+  - { vol_path: "/config", vol_host_path: "path_to_appdata", desc: "Appdata Path" }
+  - { vol_path: "/backups", vol_host_path: "path_to_backups", desc: "Backup Destination Path" }
+  - { vol_path: "/source", vol_host_path: "path_to_source", desc: "Backup Source Path" }
+  - { vol_path: "/tmp", vol_host_path: "/tmp", desc: "Temporary Uploads Path" }
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "8200", internal_port: "8200", port_desc: "WebUI Port:" }
+  - { external_port: "8200", internal_port: "8200", port_desc: "WebUI Port" }
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Australia/Melbourne", desc: "Specify a timezone to use, eg. Australia/Melbourne"}
@@ -53,4 +53,5 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "01.26.23:", desc: "rearrange init files." }
   - { date: "01.03.23:", desc: "Initial release." }
