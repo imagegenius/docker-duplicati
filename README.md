@@ -36,7 +36,7 @@ This image offers different versions via tags. Be cautious when using unstable o
 
 ## Application Setup
 
-The webui is at `<your ip>:8200` , create backup jobs etc via the webui, for local backups select `/backups` as the destination. For more information see [Duplicati](https://www.duplicati.com/).
+The WebUI can be found at `http://your-ip:8200`.
 
 ## Usage
 
