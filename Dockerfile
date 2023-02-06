@@ -14,7 +14,6 @@ RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
     ca-certificates-mono \
-    jq \
     libgdiplus \
     mono-reference-assemblies-facades \
     rclone \
