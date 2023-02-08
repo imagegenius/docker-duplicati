@@ -50,6 +50,8 @@ app_setup_block_enabled: true
 app_setup_block: |
   The WebUI can be found at `http://your-ip:8200`.
 
+  This image is similar to [linuxserver/duplicati](https://github.com/linuxserver/docker-duplicati), but based on alpine.
+
 # changelog
 changelogs:
   - { date: "01.26.23:", desc: "rearrange init files." }
