@@ -4,7 +4,7 @@
 project_name: duplicati
 project_url: "https://www.duplicati.com/"
 project_logo: "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/duplicati-icon.png"
-project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers."
+project_blurb: "Duplicati is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers."
 project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name }}"
 
 # supported architectures
