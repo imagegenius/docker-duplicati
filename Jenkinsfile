@@ -324,7 +324,7 @@ pipeline {
           --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
           --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.title=Duplicati\" \
-          --label \"org.opencontainers.image.description=[Duplicati](https://www.duplicati.com/) is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers.\" \
+          --label \"org.opencontainers.image.description=Duplicati is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers.\" \
           --no-cache --pull -t ${GITHUBIMAGE}:${META_TAG} \
           --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
       }
@@ -353,7 +353,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Duplicati\" \
-              --label \"org.opencontainers.image.description=[Duplicati](https://www.duplicati.com/) is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers.\" \
+              --label \"org.opencontainers.image.description=Duplicati is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers.\" \
               --no-cache --pull -t ${GITHUBIMAGE}:amd64-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
           }
@@ -379,7 +379,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Duplicati\" \
-              --label \"org.opencontainers.image.description=[Duplicati](https://www.duplicati.com/) is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers.\" \
+              --label \"org.opencontainers.image.description=Duplicati is a backup client that securely stores encrypted, incremental, compressed remote backups of local files on cloud storage services and remote file servers.\" \
               --no-cache --pull -f Dockerfile.aarch64 -t ${GITHUBIMAGE}:arm64v8-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
             sh '''docker tag ${GITHUBIMAGE}:arm64v8-${META_TAG} ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
