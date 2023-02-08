@@ -36,6 +36,8 @@ This image offers different versions via tags. Be cautious when using unstable o
 
 The WebUI can be found at `http://your-ip:8200`.
 
+This image is similar to [linuxserver/duplicati](https://github.com/linuxserver/docker-duplicati), but based on alpine.
+
 ## Usage
 
 Example snippets to start creating a container:
