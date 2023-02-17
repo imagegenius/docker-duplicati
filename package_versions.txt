@@ -63,7 +63,7 @@ pango-1.50.12-r0
 pcre2-10.42-r0
 pixman-0.42.2-r0
 procps-3.3.17-r2
-rclone-1.60.1-r1
+rclone-1.60.1-r2
 readline-8.2.0-r0
 scanelf-1.3.5-r1
 shadow-4.13-r0
