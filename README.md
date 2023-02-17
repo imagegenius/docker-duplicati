@@ -23,6 +23,7 @@ This image supports the following architectures:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
 | arm64 | ✅ | arm64v8-\<version tag\> |
+| armhf | ❌ | |
 
 ## Version Tags
 
@@ -31,7 +32,6 @@ This image offers different versions via tags. Be cautious when using unstable o
 | Tag | Available | Description |
 | :----: | :----: |--- |
 | latest | ✅ | Latest beta release of Duplicati with an Alpine base. |
-
 ## Application Setup
 
 The WebUI can be found at `http://your-ip:8200`.
@@ -54,7 +54,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Australia/Melbourne
+      - TZ=Etc/UTC
       - CLI_ARGS= #optional
     volumes:
       - path_to_appdata:/config
@@ -73,7 +73,7 @@ docker run -d \
   --name=duplicati \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Australia/Melbourne \
+  -e TZ=Etc/UTC \
   -e CLI_ARGS= `#optional` \
   -p 8200:8200 \
   -v path_to_appdata:/config \
@@ -82,9 +82,10 @@ docker run -d \
   -v /tmp:/tmp \
   --restart unless-stopped \
   ghcr.io/imagegenius/duplicati:latest
+
 ```
 
-## Container Variables
+## Variables
 
 To configure the container, pass variables at runtime using the format `<external>:<internal>`. For instance, `-p 8080:80` exposes port `80` inside the container, making it accessible outside the container via the host's IP on port `8080`.
 
@@ -93,7 +94,7 @@ To configure the container, pass variables at runtime using the format `<externa
 | `-p 8200` | WebUI Port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Australia/Melbourne` | Specify a timezone to use, eg. Australia/Melbourne |
+| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e CLI_ARGS=` | Optionally specify any [CLI variables](https://duplicati.readthedocs.io/en/latest/07-other-command-line-utilities/) you want to launch the app with |
 | `-v /config` | Appdata Path |
 | `-v /backups` | Backup Destination Path |
