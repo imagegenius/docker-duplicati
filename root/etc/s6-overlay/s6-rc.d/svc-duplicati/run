@@ -1,10 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-cd /app/duplicati || exit
-
-exec s6-setuidgid abc \
-		mono Duplicati.Server.exe \
-		--webservice-interface=any \
-		--server-datafolder=/config \
-		--webservice-allowed-hostnames=* \
-		"$CLI_ARGS"
+exec \
+    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z 127.0.0.1 8200" \
+        cd /app/duplicati s6-setuidgid abc \
+            mono Duplicati.Server.exe \
+                --webservice-interface=any \
+                --server-datafolder=/config \
+                --webservice-allowed-hostnames=* \
+                "$CLI_ARGS"
