@@ -140,5 +140,6 @@ Instructions for updating containers:
 
 ## Versions
 
-* **01.26.23:** - rearrange init files.
+* **21.03.23:** - Add service checks
+* **26.01.23:** - rearrange init files.
 * **01.03.23:** - Initial release.
