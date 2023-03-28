@@ -25,13 +25,6 @@ This image supports the following architectures:
 | arm64 | ✅ | arm64v8-\<version tag\> |
 | armhf | ❌ | |
 
-## Version Tags
-
-This image offers different versions via tags. Be cautious when using unstable or development tags, and read their descriptions carefully.
-
-| Tag | Available | Description |
-| :----: | :----: |--- |
-| latest | ✅ | Latest beta release of Duplicati with an Alpine base. |
 ## Application Setup
 
 The WebUI can be found at `http://your-ip:8200`.
