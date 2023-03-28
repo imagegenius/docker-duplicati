@@ -9,9 +9,6 @@ ARG DUPLICATI_RELEASE
 LABEL build_version="ImageGenius Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydazz"
 
-# environment settings
-ENV HOME="/config"
-
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
