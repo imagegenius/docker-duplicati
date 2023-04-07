@@ -85,9 +85,9 @@ To configure the container, pass variables at runtime using the format `<externa
 | Variable | Description |
 | :----: | --- |
 | `-p 8200` | WebUI Port |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
+| `-e PUID=1000` | UID for permissions - see below for explanation |
+| `-e PGID=1000` | GID for permissions - see below for explanation |
+| `-e TZ=Etc/UTC` | Specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e CLI_ARGS=` | Optionally specify any [CLI variables](https://duplicati.readthedocs.io/en/latest/07-other-command-line-utilities/) you want to launch the app with |
 | `-v /config` | Appdata Path |
 | `-v /backups` | Backup Destination Path |
