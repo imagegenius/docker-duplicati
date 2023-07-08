@@ -126,7 +126,7 @@ github.com/yunify/qingstor-sdk-go/v3                        v3.2.0              
 github.com/zeebo/blake3                                     v0.2.3                                 go-module  
 github.com/zeebo/errs                                       v1.2.2                                 go-module  
 github.com/zeebo/errs                                       v1.3.0                                 go-module  
-glib                                                        2.76.3-r0                              apk        
+glib                                                        2.76.4-r0                              apk        
 go.etcd.io/bbolt                                            v1.3.7                                 go-module  
 go.opencensus.io                                            v0.24.0                                go-module  
 go.uber.org/atomic                                          v1.7.0                                 go-module  
