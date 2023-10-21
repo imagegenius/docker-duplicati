@@ -562,8 +562,8 @@ mono-reference-assemblies                                    6.12.0.182-r0      
 mono-reference-assemblies-facades                            6.12.0.182-r0                                                    apk        
 mono-runtime                                                 6.12.0.182-r0                                                    apk        
 mscorlib.dll                                                 4.6.57.0                                                         dotnet     
-musl                                                         1.2.4-r1                                                         apk        
-musl-utils                                                   1.2.4-r1                                                         apk        
+musl                                                         1.2.4-r2                                                         apk        
+musl-utils                                                   1.2.4-r2                                                         apk        
 ncurses-terminfo-base                                        6.4_p20230506-r0                                                 apk        
 netcat-openbsd                                               1.219-r1                                                         apk        
 netstandard                                                  2.1.0.0                                                          dotnet     
