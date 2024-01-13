@@ -397,7 +397,7 @@ storj.io/uplink                                             v1.10.0             
 storj.io/uplink                                             v1.5.0-rc.1                                                                        go-module  
 storj.io/uplink-c                                           (devel)                                                                            go-module  
 tiff                                                        4.5.1-r0                                                                           apk        
-tzdata                                                      2023c-r1                                                                           apk        
+tzdata                                                      2023d-r0                                                                           apk        
 uplink.NET                                                  2.6.0.1610+926aefe64ec9b54be5944460de8e1d857d8973c9                                dotnet     
 utmps-libs                                                  0.1.2.1-r1                                                                         apk        
 zlib                                                        1.2.13-r1                                                                          apk        
