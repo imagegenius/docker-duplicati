@@ -184,8 +184,8 @@ bazil.org/fuse                                              v0.0.0-2022120921130
 brotli-libs                                                 1.0.9-r14                                                                          apk                           
 busybox                                                     1.36.1-r5                                                                          apk                           
 busybox-binsh                                               1.36.1-r5                                                                          apk                           
-ca-certificates                                             20230506-r0                                                                        apk                           
-ca-certificates-bundle                                      20230506-r0                                                                        apk                           
+ca-certificates                                             20240226-r0                                                                        apk                           
+ca-certificates-bundle                                      20240226-r0                                                                        apk                           
 ca-certificates-mono                                        6.12.0.182-r0                                                                      apk                           
 cairo                                                       1.17.8-r1                                                                          apk                           
 cloud.google.com/go/compute/metadata                        v0.2.3                                                                             go-module                     
@@ -196,7 +196,7 @@ fontconfig                                                  2.14.2-r3           
 freetype                                                    2.13.0-r5                                                                          apk                           
 fribidi                                                     1.0.13-r0                                                                          apk                           
 gacutil.exe                                                 0.0.0.0                                                                            dotnet                        
-giflib                                                      5.2.1-r4                                                                           apk                           
+giflib                                                      5.2.2-r0                                                                           apk                           
 github.com/Azure/azure-sdk-for-go/sdk/azcore                v1.4.0                                                                             go-module                     
 github.com/Azure/azure-sdk-for-go/sdk/azidentity            v1.2.2                                                                             go-module                     
 github.com/Azure/azure-sdk-for-go/sdk/internal              v1.2.0                                                                             go-module                     
