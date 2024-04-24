@@ -133,6 +133,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **24.04.24:** - rebase to alpine 3.19
 * **21.03.23:** - Add service checks
 * **26.01.23:** - rearrange init files.
 * **01.03.23:** - Initial release.
