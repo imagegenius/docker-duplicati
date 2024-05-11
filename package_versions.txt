@@ -340,7 +340,7 @@ github.com/youmark/pkcs8                                    v0.0.0-2020102704154
 github.com/yunify/qingstor-sdk-go/v3                        v3.2.0                                                                             go-module                     
 github.com/zeebo/blake3                                     v0.2.3                                                                             go-module  (+5 duplicates)    
 github.com/zeebo/errs                                       v1.3.0                                                                             go-module  (+5 duplicates)    
-glib                                                        2.78.4-r0                                                                          apk                           
+glib                                                        2.78.5-r0                                                                          apk                           
 go.etcd.io/bbolt                                            v1.3.8                                                                             go-module                     
 go.opencensus.io                                            v0.24.0                                                                            go-module                     
 goftp.io/server/v2                                          v2.0.1                                                                             go-module                     
