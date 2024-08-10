@@ -436,7 +436,7 @@ storj.io/picobuf                                            v0.0.2-0.20230906122
 storj.io/uplink                                             v1.12.1                                                                            go-module                     
 storj.io/uplink                                             v1.12.2                                                                            go-module  (+4 duplicates)    
 storj.io/uplink-c                                           (devel)                                                                            go-module                     
-storj.io/uplink-c                                           1.21.4                                                                             go-module                     
+storj.io/uplink-c                                           v1.21.4                                                                            go-module                     
 storj.io/uplink-c                                           v1.8.1                                                                             go-module  (+2 duplicates)    
 tiff                                                        4.6.0-r0                                                                           apk                           
 tzdata                                                      2024a-r0                                                                           apk                           
