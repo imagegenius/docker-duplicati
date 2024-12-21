@@ -2,13 +2,12 @@
 
 # jenkins variables
 project_name: docker-duplicati
-external_type: custom_json
+external_type: na
+custom_version_command: "echo 'v2.0.8.1-2.0.8.1_beta_2024-05-07'"
 release_type: stable
 release_tag: latest
 ig_branch: main
 repo_vars:
-  - JSON_URL = 'https://api.github.com/repos/duplicati/duplicati/releases'
-  - JSON_PATH = 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'
   - BUILD_VERSION_ARG = 'DUPLICATI_RELEASE'
   - IG_USER = 'imagegenius'
   - IG_REPO = 'docker-duplicati'
